@@ -1,0 +1,35 @@
+{% if error %}<p>{{ error }}</p>{% endif %}
+
+{% if not current_user %}<p>You should not have access to this site.</p>{% endif %}
+
+<h1>Edit User {{ user.username }}</h1>
+
+{% if current_user %}
+
+  <form method="POST" action="{{url_for('edit_user', user_id=user.id)}}">
+    <label> Username:
+      <input type='text' size='30' name='username' placeholder={{ user.username }}>
+    </label>
+
+    <br>
+
+    <label> Email:
+      <input type="email" size='30' name='email' placeholder={{user.email}}>
+    </label>
+
+    <br>
+
+    <label> Password:
+      <input type="password" size='30' name='password'>
+    </label>
+
+    <br>
+
+    <input type='submit' value='Edit'>
+  </form>
+
+{% else %}
+
+  <p>Sorry, you can't edit anything.</p>
+
+{% endif %}

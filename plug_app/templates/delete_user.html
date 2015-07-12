@@ -1,0 +1,13 @@
+{% if error %}<p>{{ error }}</p>{% endif %}
+
+{% if not current_user %}<p>You should not have access to this site.</p>{% endif %}
+
+<h1>Are you sure you want to delete {{ user.username }}?</h1>
+
+{% if current_user %}
+  <form method="POST" action="{{ url_for('delete_user', user_id=user.id) }}">
+    <input type="submit" value="Delete">
+  </form>
+{% else %}
+  <p>Sorry, you can't.</p>
+{% endif %}

@@ -1,0 +1,36 @@
+<h1>New User</h1>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+
+    <ul>
+      {% for message in messages %}
+        <li><strong>{{message}}</strong></li>
+      {% endfor %}
+    </ul>
+
+  {% endif %}
+{% endwith %}
+
+
+<form method='POST' action="{{url_for('new_user')}}">
+  <label> Username:
+    <input type='text' size='30' name='username' value={{ username }}>
+  </label>
+
+  <br>
+
+  <label> Email:
+    <input type="email" size='30' name='email' value={{ email }}>
+  </label>
+
+  <br>
+
+  <label> Password:
+    <input type="password" size='30' name='password'>
+  </label>
+
+  <br>
+
+  <input type='submit' value='Create'>
+</form>

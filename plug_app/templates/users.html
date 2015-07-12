@@ -1,0 +1,24 @@
+<a href={{ url_for('new_user') }}>Create a new user</a>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+
+    <ul>
+      {% for message in messages %}
+        <li><strong>{{message}}</strong></li>
+      {% endfor %}
+    </ul>
+
+  {% endif %}
+{% endwith %}
+
+{% if error %}<p>{{ error }}</p>{% endif %}
+
+{% for user in users %}
+  <h1><a href={{ url_for('show_user', user_id=user.id) }}>{{ user.username }}</a></h1>
+  {% if current_user.id == user.id %}
+    <p>{{ user.email }} | {{ user.password }}</p>
+  {% else %}
+    <p>Nothing to see here.</p>
+  {% endif %}
+{% endfor %}

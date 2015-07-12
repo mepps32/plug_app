@@ -1,0 +1,21 @@
+<h2>Login</h2>
+
+{% if error %}<p>{{ error }}</p>{% endif %}
+
+<form method='POST' action="{{ url_for('login') }}">
+  
+  <label> Username:
+    <input type='text' size='30' name='username'>
+  </label>
+
+  <br>
+
+  <label> Password:
+    <input type='password' size='30' name='password'>
+  </label>
+
+  <br>
+
+  <input type='submit' value='Login'>
+
+</form>
